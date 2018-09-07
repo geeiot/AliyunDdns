@@ -58,7 +58,7 @@
             this.lab_accessKeySecret.BackColor = System.Drawing.Color.Transparent;
             this.lab_accessKeySecret.BorderColor = System.Drawing.Color.White;
             this.lab_accessKeySecret.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lab_accessKeySecret.Location = new System.Drawing.Point(36, 138);
+            this.lab_accessKeySecret.Location = new System.Drawing.Point(36, 127);
             this.lab_accessKeySecret.Name = "lab_accessKeySecret";
             this.lab_accessKeySecret.Size = new System.Drawing.Size(133, 20);
             this.lab_accessKeySecret.TabIndex = 1;
@@ -115,7 +115,7 @@
             this.tb_accessKeySecret.IsPasswordChat = '\0';
             this.tb_accessKeySecret.IsSystemPasswordChar = false;
             this.tb_accessKeySecret.Lines = new string[0];
-            this.tb_accessKeySecret.Location = new System.Drawing.Point(176, 133);
+            this.tb_accessKeySecret.Location = new System.Drawing.Point(176, 122);
             this.tb_accessKeySecret.Margin = new System.Windows.Forms.Padding(0);
             this.tb_accessKeySecret.MaxLength = 32767;
             this.tb_accessKeySecret.MinimumSize = new System.Drawing.Size(28, 28);
@@ -153,7 +153,7 @@
             this.ckb_startWithSystem.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.ckb_startWithSystem.DownBack = null;
             this.ckb_startWithSystem.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckb_startWithSystem.Location = new System.Drawing.Point(82, 181);
+            this.ckb_startWithSystem.Location = new System.Drawing.Point(82, 175);
             this.ckb_startWithSystem.MouseBack = null;
             this.ckb_startWithSystem.Name = "ckb_startWithSystem";
             this.ckb_startWithSystem.NormlBack = null;
@@ -205,7 +205,7 @@
             this.ckb_autoStartDdns.ControlState = CCWin.SkinClass.ControlState.Normal;
             this.ckb_autoStartDdns.DownBack = null;
             this.ckb_autoStartDdns.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.ckb_autoStartDdns.Location = new System.Drawing.Point(214, 181);
+            this.ckb_autoStartDdns.Location = new System.Drawing.Point(214, 175);
             this.ckb_autoStartDdns.MouseBack = null;
             this.ckb_autoStartDdns.Name = "ckb_autoStartDdns";
             this.ckb_autoStartDdns.NormlBack = null;

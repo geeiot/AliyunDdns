@@ -29,7 +29,7 @@ namespace AliyunDdns
         private void Form_Main_Load(object sender, EventArgs e)
         {
             StartTime = DateTime.Now;
-            
+
             //读取配置文件
             if (!Config.ReadConfig())
             {
@@ -71,6 +71,24 @@ namespace AliyunDdns
             Config.SpanTime = int.Parse(comb_time.Text);
             Config.SaveConfig();
         }
+
+        private void Form_Main_Shown(object sender, EventArgs e)
+        {
+            Form_Load load = new Form_Load();
+            load.ShowIp += ShowIp;
+            load.ShowDialog();
+            if (string.IsNullOrEmpty(tb_ip.Text))
+            {
+                ShowLog($"获取本机外网IP失败，请检查网络设置！");
+            }
+            else
+            {
+                if (Config.StartDdhsWithProgram && sender != null)
+                {
+                    btn_start_Click(null, null);
+                }
+            }
+        }
         #endregion
 
         #region 运行时间线程
@@ -93,7 +111,7 @@ namespace AliyunDdns
 
                 if (lab_runningTime.InvokeRequired)
                 {
-                    lab_runningTime.Invoke(new Action(()=>
+                    lab_runningTime.Invoke(new Action(() =>
                     {
                         lab_runningTime.Text = showTxt;
                     }));
@@ -115,7 +133,8 @@ namespace AliyunDdns
             sb.Append(log);
             if (tb_log.InvokeRequired)
             {
-                lab_runningTime.Invoke(new Action(()=> {
+                lab_runningTime.Invoke(new Action(() =>
+                {
                     tb_log.Text += sb.ToString() + "\r\n";
                 }));
             }
@@ -130,15 +149,15 @@ namespace AliyunDdns
         #region 界面逻辑
         private void btn_start_Click(object sender, EventArgs e)
         {
-            if(ddns == null)
+            if (ddns == null)
             {
                 ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
             }
-            if(btn_start.Text == "Start")
+            if (btn_start.Text == "Start")
             {
-                if(tb_domain.Text.Split('.').Length <= 2)
+                if (tb_domain.Text.Split('.').Length <= 2)
                 {
-                    MessageBox.Show("域名格式错误，应该输入以下的域名格式：www.geeiot.net/@.geeiot.net！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("域名格式错误，应该输入以下的域名格式：www.geeiot.net或@.geeiot.net！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
                 else if (!CheckIP(tb_ip.Text))
@@ -146,7 +165,7 @@ namespace AliyunDdns
                     MessageBox.Show("IP格式错误，请重新获取IP！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
-                if(!ddns.StartDdns(tb_domain.Text, tb_ip.Text))
+                if (!ddns.StartDdns(tb_domain.Text, tb_ip.Text))
                 {
                     MessageBox.Show("启动解析失败，请重试！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
@@ -155,7 +174,7 @@ namespace AliyunDdns
                 comb_time.Enabled = false;
                 btn_start.Text = "Stop";
             }
-            else if(btn_start.Text == "Stop")
+            else if (btn_start.Text == "Stop")
             {
                 if (!ddns.StopDns())
                 {
@@ -189,7 +208,8 @@ namespace AliyunDdns
         {
             if (tb_ip.InvokeRequired)
             {
-                lab_runningTime.Invoke(new Action(() => {
+                lab_runningTime.Invoke(new Action(() =>
+                {
                     tb_ip.Text = ip;
                 }));
             }
@@ -233,21 +253,11 @@ namespace AliyunDdns
             }
         }
 
-        #endregion
-
-        private void Form_Main_Shown(object sender, EventArgs e)
+        private void linkLabel_UpdateIp_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Form_Load load = new Form_Load();
-            load.ShowIp += ShowIp;
-            load.ShowDialog();
-            if (string.IsNullOrEmpty(tb_ip.Text))
-            {
-                ShowLog($"获取本机外网IP失败，请检查网络设置！");
-            }
-            else
-            {
-                btn_start_Click(null, null);
-            }
+            Form_Main_Shown(null, null);
         }
+
+        #endregion
     }
 }

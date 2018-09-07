@@ -45,6 +45,7 @@
             this.skinMenuStrip1 = new CCWin.SkinControl.SkinMenuStrip();
             this.选项ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.设置ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkLabel_UpdateIp = new System.Windows.Forms.LinkLabel();
             this.skinMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,6 +118,7 @@
             // 
             this.tb_ip.BackColor = System.Drawing.Color.Transparent;
             this.tb_ip.DownBack = null;
+            this.tb_ip.Enabled = false;
             this.tb_ip.Icon = null;
             this.tb_ip.IconIsButton = false;
             this.tb_ip.IconMouseState = CCWin.SkinClass.ControlState.Normal;
@@ -361,12 +363,24 @@
             this.设置ToolStripMenuItem.Text = "设置";
             this.设置ToolStripMenuItem.Click += new System.EventHandler(this.设置ToolStripMenuItem_Click);
             // 
+            // linkLabel_UpdateIp
+            // 
+            this.linkLabel_UpdateIp.AutoSize = true;
+            this.linkLabel_UpdateIp.Location = new System.Drawing.Point(413, 144);
+            this.linkLabel_UpdateIp.Name = "linkLabel_UpdateIp";
+            this.linkLabel_UpdateIp.Size = new System.Drawing.Size(37, 15);
+            this.linkLabel_UpdateIp.TabIndex = 13;
+            this.linkLabel_UpdateIp.TabStop = true;
+            this.linkLabel_UpdateIp.Text = "更新";
+            this.linkLabel_UpdateIp.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel_UpdateIp_LinkClicked);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.ClientSize = new System.Drawing.Size(518, 365);
+            this.Controls.Add(this.linkLabel_UpdateIp);
             this.Controls.Add(this.lab_runningTime);
             this.Controls.Add(this.skinLabel5);
             this.Controls.Add(this.tb_log);
@@ -413,6 +427,7 @@
         private CCWin.SkinControl.SkinLabel skinLabel5;
         private CCWin.SkinControl.SkinLabel lab_runningTime;
         private System.Windows.Forms.ToolStripMenuItem 设置ToolStripMenuItem;
+        private System.Windows.Forms.LinkLabel linkLabel_UpdateIp;
     }
 }
 
