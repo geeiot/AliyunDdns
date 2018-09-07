@@ -13,13 +13,13 @@ namespace AliyunDdns
 
         private static string ConfigPath = Directory.GetCurrentDirectory() + @"\Config.json";
 
-        public static string Domain { get; set; } = "1byte.cn";
+        public static string Domain { get; set; } = "www.geeiot.net";
 
         public static int SpanTime { get; set; } = 3;
 
-        public static string AccessKeyId { get; set; } = "LTAIt6nzHnc1xWxt";
+        public static string AccessKeyId { get; set; }
 
-        public static string AccessKeySecret { get; set; } = "vVUfg5fwYcLC0IPwldY13UNx4DA6T3";
+        public static string AccessKeySecret { get; set; }
 
         public static bool StartDdhsWithProgram { get; set; } = false;
 
@@ -62,9 +62,9 @@ namespace AliyunDdns
                     return false;
                 }
             }
-            catch (Exception ex)
+            catch
             {
-                throw new Exception($"Read config json error,error is {ex.Message}");
+                return false;
             }
         }
 
