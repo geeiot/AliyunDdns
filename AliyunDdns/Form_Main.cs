@@ -151,6 +151,7 @@ namespace AliyunDdns
                     MessageBox.Show("启动解析失败，请重试！", "警告", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
+                tb_domain.ReadOnly = true;
                 btn_start.Text = "Stop";
             }
             else if(btn_start.Text == "Stop")
@@ -162,6 +163,7 @@ namespace AliyunDdns
                 }
                 else
                 {
+                    tb_domain.ReadOnly = false;
                     MessageBox.Show("解析已停止！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btn_start.Text = "Start";
                 }
