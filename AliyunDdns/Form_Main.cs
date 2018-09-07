@@ -31,10 +31,7 @@ namespace AliyunDdns
         private void Form_Main_Load(object sender, EventArgs e)
         {
             StartTime = DateTime.Now;
-            //实例化类
-            ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
-            ddns.WriteLog += ShowLog;
-            ddns.ShowIp += ShowIp;
+            
             //读取配置文件
             if (!Config.ReadConfig())
             {
@@ -47,6 +44,11 @@ namespace AliyunDdns
                     Environment.Exit(0);
                 }
             }
+            //实例化类
+            ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
+            ddns.WriteLog += ShowLog;
+            ddns.ShowIp += ShowIp;
+            //
             comb_time.DataSource = CombValue;
             if (CombValue.Contains(Config.SpanTime.ToString()))
             {

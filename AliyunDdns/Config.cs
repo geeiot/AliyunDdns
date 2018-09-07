@@ -17,9 +17,9 @@ namespace AliyunDdns
 
         public static int SpanTime { get; set; } = 3;
 
-        public static string AccessKeyId { get; set; }
+        public static string AccessKeyId { get; set; } = "你的AccessKeyId";
 
-        public static string AccessKeySecret { get; set; }
+        public static string AccessKeySecret { get; set; } = "你的AccessKeySecret";
 
         public static bool StartDdhsWithProgram { get; set; } = false;
 
