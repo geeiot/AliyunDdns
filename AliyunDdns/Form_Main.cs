@@ -18,8 +18,6 @@ namespace AliyunDdns
             "3","5","10","15","20","30","60","120"
         };
 
-        private bool IsStartDns { get; set; } = false;
-
         private Ddns ddns { get; set; }
 
         public Form_Main()
@@ -166,7 +164,6 @@ namespace AliyunDdns
                 else
                 {
                     tb_domain.ReadOnly = false;
-                    MessageBox.Show("解析已停止！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     btn_start.Text = "Start";
                 }
             }
@@ -202,7 +199,7 @@ namespace AliyunDdns
 
         private void 设置ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (IsStartDns)
+            if (btn_start.Text == "Stop")
             {
                 MessageBox.Show("请先停止解析才能进行配置！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -244,6 +241,10 @@ namespace AliyunDdns
             if (string.IsNullOrEmpty(tb_ip.Text))
             {
                 ShowLog($"获取本机外网IP失败，请检查网络设置！");
+            }
+            else
+            {
+                btn_start_Click(null, null);
             }
         }
     }
