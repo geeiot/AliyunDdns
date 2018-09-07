@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliyunDdns", "AliyunDdns\AliyunDdns.csproj", "{DAE02859-9370-4062-9B74-A4573F2FE5D3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AliyunDnsSDK", "AliyunDnsSDK\AliyunDnsSDK.csproj", "{2D01575C-D0F2-405C-90AE-77010B1D6C51}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AliyunDnsSDK.Core", "AliyunDnsSDK.Core\AliyunDnsSDK.Core.csproj", "{8F8D7833-2907-4B20-B58C-413F6703E90F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DAE02859-9370-4062-9B74-A4573F2FE5D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAE02859-9370-4062-9B74-A4573F2FE5D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAE02859-9370-4062-9B74-A4573F2FE5D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAE02859-9370-4062-9B74-A4573F2FE5D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2D01575C-D0F2-405C-90AE-77010B1D6C51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2D01575C-D0F2-405C-90AE-77010B1D6C51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2D01575C-D0F2-405C-90AE-77010B1D6C51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2D01575C-D0F2-405C-90AE-77010B1D6C51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F8D7833-2907-4B20-B58C-413F6703E90F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F8D7833-2907-4B20-B58C-413F6703E90F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F8D7833-2907-4B20-B58C-413F6703E90F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F8D7833-2907-4B20-B58C-413F6703E90F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {93206680-08F9-4F96-A5FA-D591B9F7F83F}
+	EndGlobalSection
+EndGlobal

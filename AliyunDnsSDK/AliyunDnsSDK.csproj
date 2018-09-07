@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2D01575C-D0F2-405C-90AE-77010B1D6C51}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AliyunDnsSDK</RootNamespace>
+    <AssemblyName>AliyunDnsSDK</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AliyunDnsApi.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="GetExtenalIp.cs" />
+    <Compile Include="Helper\Encrypt.cs" />
+    <Compile Include="Helper\HttpHelper.cs" />
+    <Compile Include="Helper\JsonHelper.cs" />
+    <Compile Include="Helper\ObjectToUriParam.cs" />
+    <Compile Include="Helper\Time.cs" />
+    <Compile Include="Helper\UrlCode.cs" />
+    <Compile Include="Logger\Log.cs" />
+    <Compile Include="Logger\LogType.cs" />
+    <Compile Include="Model\DataType\BatchFailResultType.cs" />
+    <Compile Include="Model\DataType\DataTypePublicParameters.cs" />
+    <Compile Include="Model\DataType\DnsProductType.cs" />
+    <Compile Include="Model\DataType\DnsServerType.cs" />
+    <Compile Include="Model\DataType\DomainGroupType.cs" />
+    <Compile Include="Model\DataType\DomainLogType.cs" />
+    <Compile Include="Model\DataType\DomainStatusType.cs" />
+    <Compile Include="Model\DataType\DomainType.cs" />
+    <Compile Include="Model\DataType\RecordLineType.cs" />
+    <Compile Include="Model\DataType\RecordLogType.cs" />
+    <Compile Include="Model\DataType\RecordType.cs" />
+    <Compile Include="Model\DataType\SLBSubDomainType.cs" />
+    <Compile Include="Model\EnumType\DomainRecordStatus.cs" />
+    <Compile Include="Model\EnumType\ResolveLine.cs" />
+    <Compile Include="Model\EnumType\ResolveLogFormat.cs" />
+    <Compile Include="Model\Requests\IAddDomainGroup.cs" />
+    <Compile Include="Model\Requests\IChangeDomainGroup.cs" />
+    <Compile Include="Model\Requests\IDeleteDomainGroup.cs" />
+    <Compile Include="Model\Requests\IDescribeDNSSLBSubDomains.cs" />
+    <Compile Include="Model\Requests\IDescribeDomainGroups.cs" />
+    <Compile Include="Model\Requests\IDescribeRecordLogs.cs" />
+    <Compile Include="Model\Requests\IAddDomainRecord.cs" />
+    <Compile Include="Model\Requests\IChangeDomainOfDnsProduct.cs" />
+    <Compile Include="Model\Requests\ICheckDomainRecord.cs" />
+    <Compile Include="Model\Requests\IDeleteDomainRecord.cs" />
+    <Compile Include="Model\Requests\IDeleteSubDomainRecords.cs" />
+    <Compile Include="Model\Requests\IDescribeDnsProductInstances.cs" />
+    <Compile Include="Model\Requests\IDescribeDomainLogs.cs" />
+    <Compile Include="Model\Requests\IDescribeDomainRecordInfo.cs" />
+    <Compile Include="Model\Requests\IDescribeSubDomainRecords.cs" />
+    <Compile Include="Model\Requests\IGetMainDomainName.cs" />
+    <Compile Include="Model\Requests\IAddDomain.cs" />
+    <Compile Include="Model\Requests\IDeleteDomain.cs" />
+    <Compile Include="Model\Requests\IDescribeDomainInfo.cs" />
+    <Compile Include="Model\Requests\IDescribeDomainRecords.cs" />
+    <Compile Include="Model\Requests\IDescribeDomains.cs" />
+    <Compile Include="Model\Requests\IModifyHichinaDomainDNS.cs" />
+    <Compile Include="Model\Requests\InterfacePublicParameters.cs" />
+    <Compile Include="Model\Requests\ISetDNSSLBStatus.cs" />
+    <Compile Include="Model\Requests\ISetDomainRecordStatus.cs" />
+    <Compile Include="Model\Requests\IUpdateDNSSLBWeight.cs" />
+    <Compile Include="Model\Requests\IUpdateDomainGroup.cs" />
+    <Compile Include="Model\Requests\IUpdateDomainRecord.cs" />
+    <Compile Include="Model\Results\AddDomainGroupResult.cs" />
+    <Compile Include="Model\Results\AddDomainRecordResult.cs" />
+    <Compile Include="Model\Results\AddDomainResult.cs" />
+    <Compile Include="Model\Results\ChangeDomainGroupResult.cs" />
+    <Compile Include="Model\Results\ChangeDomainOfDnsProductResult.cs" />
+    <Compile Include="Model\Results\CheckDomainRecordResult.cs" />
+    <Compile Include="Model\Results\DeleteDomainGroupResult.cs" />
+    <Compile Include="Model\Results\DeleteDomainRecordResult.cs" />
+    <Compile Include="Model\Results\DeleteDomainResult.cs" />
+    <Compile Include="Model\Results\DeleteSubDomainRecordsResult.cs" />
+    <Compile Include="Model\Results\DescribeDnsProductInstancesResult.cs" />
+    <Compile Include="Model\Results\DescribeDNSSLBSubDomainsResult.cs" />
+    <Compile Include="Model\Results\DescribeDomainGroupsResult.cs" />
+    <Compile Include="Model\Results\DescribeDomainInfoResult.cs" />
+    <Compile Include="Model\Results\DescribeDomainLogsResult.cs" />
+    <Compile Include="Model\Results\DescribeDomainRecordInfoResult.cs" />
+    <Compile Include="Model\Results\DescribeDomainRecordsResult.cs" />
+    <Compile Include="Model\Results\DescribeDomainsResult.cs" />
+    <Compile Include="Model\Results\DescribeRecordLogsResult.cs" />
+    <Compile Include="Model\Results\DescribeSubDomainRecordsResult.cs" />
+    <Compile Include="Model\Results\GetMainDomainNameResult.cs" />
+    <Compile Include="Model\Results\ModifyHichinaDomainDNSResult.cs" />
+    <Compile Include="Model\Results\ResultPublicParameters.cs" />
+    <Compile Include="Model\Results\SetDNSSLBStatusResult.cs" />
+    <Compile Include="Model\Results\SetDomainRecordStatusResult.cs" />
+    <Compile Include="Model\Results\UpdateDNSSLBWeightResult.cs" />
+    <Compile Include="Model\Results\UpdateDomainGroupResult.cs" />
+    <Compile Include="Model\Results\UpdateDomainRecordResult.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
