@@ -25,7 +25,7 @@ namespace AliyunDdns
         {
             if (string.IsNullOrEmpty(tb_accessKeyId.Text))
             {
-                MessageBox.Show("请输入你的AccessKeyId！","提示",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("请输入你的AccessKeyId！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (string.IsNullOrEmpty(tb_accessKeySecret.Text))
@@ -33,11 +33,10 @@ namespace AliyunDdns
                 MessageBox.Show("请输入你的AccessKeySecret！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            if (ckb_startWithSystem.Checked)
-            {
-                RunWhenStart(false, "Geeiot AliyunDdns Tools", path);
-                Config.StartWithSystem = true;
-            }
+            //设置开机启动
+            RunWhenStart(ckb_startWithSystem.Checked, "Geeiot AliyunDdns Tools", path);
+            Config.StartWithSystem = ckb_startWithSystem.Checked;
+
             Config.AccessKeyId = tb_accessKeyId.Text;
             Config.AccessKeySecret = tb_accessKeySecret.Text;
             Config.StartDdhsWithProgram = ckb_autoStartDdns.Checked;
