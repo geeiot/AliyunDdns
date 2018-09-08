@@ -42,7 +42,6 @@ namespace AliyunDdns
             Config.StartDdhsWithProgram = ckb_autoStartDdns.Checked;
             if (Config.SaveConfig())
             {
-                MessageBox.Show("设置保存成功！", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }
             else

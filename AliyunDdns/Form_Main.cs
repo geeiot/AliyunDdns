@@ -20,6 +20,8 @@ namespace AliyunDdns
 
         private Ddns ddns { get; set; }
 
+        private bool IsStart { get; set; } = false;
+
         public Form_Main()
         {
             InitializeComponent();
@@ -29,38 +31,14 @@ namespace AliyunDdns
         private void Form_Main_Load(object sender, EventArgs e)
         {
             StartTime = DateTime.Now;
-
-            //读取配置文件
-            if (!Config.ReadConfig())
-            {
-                if (DialogResult.OK == MessageBox.Show("读取配置文件失败！是否初始化配置文件？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Error))
-                {
-                    Config.SaveConfig();
-                }
-                else
-                {
-                    Environment.Exit(0);
-                }
-            }
-            //实例化类
-            ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
-            ddns.WriteLog += ShowLog;
-            ddns.ShowIp += ShowIp;
-            //
             comb_time.DataSource = CombValue;
-            if (CombValue.Contains(Config.SpanTime.ToString()))
+            if (!LoadConfig())
             {
-                int index = CombValue.IndexOf(Config.SpanTime.ToString());
-                comb_time.SelectedIndex = index;
+                throw new Exception("读取配置文件出错，请检查程序所在目录是否可写！");
             }
-            else
-            {
-                comb_time.SelectedIndex = 0;
-            }
-            tb_domain.Text = Config.Domain;
             //启动计时线程
             StartBackgroundServices();
-
+            IsStart = true;
             //显示日志
             ShowLog("程序已启动！");
         }
@@ -149,6 +127,7 @@ namespace AliyunDdns
         #region 界面逻辑
         private void btn_start_Click(object sender, EventArgs e)
         {
+            LoadConfig();  //重新加载配置文件
             if (ddns == null)
             {
                 ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
@@ -259,5 +238,47 @@ namespace AliyunDdns
         }
 
         #endregion
+
+        private bool LoadConfig()
+        {
+            try
+            {
+                if (IsStart)
+                {
+                    //Save Config
+                    Form_Main_FormClosing(null, null);
+                }
+
+                //读取配置文件
+                if (!Config.ReadConfig())
+                {
+                    if (!Config.SaveConfig())
+                    {
+                        return false;
+                    }
+                }
+                //实例化类
+                ddns = null;
+                ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
+                ddns.WriteLog += ShowLog;
+                ddns.ShowIp += ShowIp;
+                //设置Combbox
+                if (CombValue.Contains(Config.SpanTime.ToString()))
+                {
+                    int index = CombValue.IndexOf(Config.SpanTime.ToString());
+                    comb_time.SelectedIndex = index;
+                }
+                else
+                {
+                    comb_time.SelectedIndex = 0;
+                }
+                tb_domain.Text = Config.Domain;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
