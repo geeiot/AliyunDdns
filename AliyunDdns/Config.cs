@@ -11,7 +11,7 @@ namespace AliyunDdns
     public class Config
     {
 
-        private static string ConfigPath = Directory.GetCurrentDirectory() + @"\Config.json";
+        private static string ConfigPath = AppDomain.CurrentDomain.BaseDirectory + @"Config.json";
 
         public static string Domain { get; set; } = "www.geeiot.net";
 
