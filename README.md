@@ -2,8 +2,9 @@
 自动获取本机外网IP，然后将指定域名解析到此IP，类似于花生壳DDNS。支持开机启动。
 
 ##### 一、简介
-<p align="center">![界面](https://doc.geeiot.net/Public/Uploads/2018-09-07/5b926d2da199a.jpg "界面")
-</p>
+
+  ![image](https://github.com/geeiot/AliyunDdns/blob/master/Image/001.jpg)
+
 这货长这样，有点丑，但是简单好用。填好域名，点击Start即可开始工作。当扫描到IP变化后会自动将变化后的IP解析到指定域名。这货基于隔壁的AliyunDnsSDK，欢迎Star。
 
 ##### 二、如何使用
