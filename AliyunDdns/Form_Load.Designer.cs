@@ -68,6 +68,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form_Load";
+            this.Load += new System.EventHandler(this.Form_Load_Load);
             this.Shown += new System.EventHandler(this.Form_Load_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);

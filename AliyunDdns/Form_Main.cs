@@ -127,7 +127,7 @@ namespace AliyunDdns
                 Thread.Sleep(1000);
                 DateTime endTime = DateTime.Now;              //获取结束时间  
                 TimeSpan oTime = endTime.Subtract(StartTime); //求时间差的函数  
-                string showTxt = $"{oTime.TotalHours}小时{oTime.Minutes}分{oTime.Seconds}秒";
+                string showTxt = $"{oTime.TotalHours.ToString("0")}小时{oTime.Minutes}分{oTime.Seconds}秒";
 
                 if (lab_runningTime.InvokeRequired)
                 {
