@@ -67,6 +67,48 @@ namespace AliyunDdns
                 }
             }
         }
+
+        private bool LoadConfig()
+        {
+            try
+            {
+                if (IsStart)
+                {
+                    //Save Config
+                    Form_Main_FormClosing(null, null);
+                }
+
+                //读取配置文件
+                if (!Config.ReadConfig())
+                {
+                    if (!Config.SaveConfig())
+                    {
+                        return false;
+                    }
+                }
+                //实例化类
+                ddns = null;
+                ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
+                ddns.WriteLog += ShowLog;
+                ddns.ShowIp += ShowIp;
+                //设置Combbox
+                if (CombValue.Contains(Config.SpanTime.ToString()))
+                {
+                    int index = CombValue.IndexOf(Config.SpanTime.ToString());
+                    comb_time.SelectedIndex = index;
+                }
+                else
+                {
+                    comb_time.SelectedIndex = 0;
+                }
+                tb_domain.Text = Config.Domain;
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
         #endregion
 
         #region 运行时间线程
@@ -85,7 +127,7 @@ namespace AliyunDdns
                 Thread.Sleep(1000);
                 DateTime endTime = DateTime.Now;              //获取结束时间  
                 TimeSpan oTime = endTime.Subtract(StartTime); //求时间差的函数  
-                string showTxt = $"{oTime.Hours}小时{oTime.Minutes}分{oTime.Seconds}秒";
+                string showTxt = $"{oTime.TotalHours}小时{oTime.Minutes}分{oTime.Seconds}秒";
 
                 if (lab_runningTime.InvokeRequired)
                 {
@@ -238,47 +280,5 @@ namespace AliyunDdns
         }
 
         #endregion
-
-        private bool LoadConfig()
-        {
-            try
-            {
-                if (IsStart)
-                {
-                    //Save Config
-                    Form_Main_FormClosing(null, null);
-                }
-
-                //读取配置文件
-                if (!Config.ReadConfig())
-                {
-                    if (!Config.SaveConfig())
-                    {
-                        return false;
-                    }
-                }
-                //实例化类
-                ddns = null;
-                ddns = new Ddns(Config.AccessKeyId, Config.AccessKeySecret);
-                ddns.WriteLog += ShowLog;
-                ddns.ShowIp += ShowIp;
-                //设置Combbox
-                if (CombValue.Contains(Config.SpanTime.ToString()))
-                {
-                    int index = CombValue.IndexOf(Config.SpanTime.ToString());
-                    comb_time.SelectedIndex = index;
-                }
-                else
-                {
-                    comb_time.SelectedIndex = 0;
-                }
-                tb_domain.Text = Config.Domain;
-                return true;
-            }
-            catch
-            {
-                return false;
-            }
-        }
     }
 }

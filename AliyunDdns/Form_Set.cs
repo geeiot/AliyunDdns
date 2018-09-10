@@ -71,7 +71,7 @@ namespace AliyunDdns
         /// </summary> 
         /// <param name=\"Started\">是否启动</param> 
         /// <param name=\"name\">启动值的名称</param> 
-        /// <param name=\"path\">启动程序的路径</param> 
+        /// <param name=\"path\">启动程序的路径，推荐Application.ExecutablePath</param> 
         private static void RunWhenStart(bool Started, string name, string path)
         {
             try
