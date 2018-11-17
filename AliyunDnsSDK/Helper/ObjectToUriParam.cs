@@ -50,11 +50,7 @@ namespace AliyunDnsSDK.Helper
             if (isSort)
             {
                 //对参数进行升序排序
-                propertis.Sort((pair1, pair2) => pair1.Name.CompareTo(pair2.Name));
-                if(Contains(propertis,"RR") && Contains(propertis, "RecordId"))
-                {
-                    propertis = Switch(propertis, "RR", "RecordId");
-                }
+                propertis = ListSort(propertis);
             }
 
             StringBuilder sb = new StringBuilder();
@@ -127,6 +123,77 @@ namespace AliyunDnsSDK.Helper
             propertis[firtIndex] = propertis[secIndex];
             propertis[secIndex] = temp;
             return propertis;
+        }
+
+        private static List<PropertyInfo> ListSort(List<PropertyInfo> inputList)
+        {
+            if (inputList.Count == 0)
+            {
+                return inputList;
+            }
+            for (int i = 0; i < inputList.Count; i++)
+            {
+                for (int j = i + 1; j < inputList.Count; j++)
+                {
+                    if (inputList[i].Name.Length >= inputList[j].Name.Length)
+                    {
+                        for (int k = 0; k < inputList[j].Name.Length; k++)
+                        {
+                            if (inputList[i].Name[k] > inputList[j].Name[k])
+                            {
+                                PropertyInfo temp = inputList[i];
+                                inputList[i] = inputList[j];
+                                inputList[j] = temp;
+                                break;
+                            }
+                            else if (inputList[i].Name[k] == inputList[j].Name[k])
+                            {
+                                if (k == inputList[j].Name.Length - 1)
+                                {
+                                    PropertyInfo temp = inputList[i];
+                                    inputList[i] = inputList[j];
+                                    inputList[j] = temp;
+                                    break;
+                                }
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        for (int k = 0; k < inputList[i].Name.Length; k++)
+                        {
+                            if (inputList[i].Name[k] > inputList[j].Name[k])
+                            {
+                                PropertyInfo temp = inputList[i];
+                                inputList[i] = inputList[j];
+                                inputList[j] = temp;
+                                break;
+                            }
+                            else if (inputList[i].Name[k] == inputList[j].Name[k])
+                            {
+                                if (k == inputList[i].Name.Length - 1)
+                                {
+                                    PropertyInfo temp = inputList[i];
+                                    inputList[i] = inputList[j];
+                                    inputList[j] = temp;
+                                    break;
+                                }
+                                continue;
+                            }
+                            else
+                            {
+                                break;
+                            }
+                        }
+                    }
+                }
+            }
+            return inputList;
         }
     }
 }
